@@ -31,13 +31,20 @@ public class ReparaturAuftragsServiceIntegrationTest {
 
     public void setUp() throws Exception {
 
+//        databaseTester = new JdbcDatabaseTester("org.hsqldb.jdbcDriver", DB_URL, USER, PASSWORD);
+//        databaseTester
+//                .setDataSet(new FlatXmlDataSetBuilder().build(new File("db_full_export.xml")));
+//        databaseTester.onSetup();
+//        db = new DatabaseImpl();
+//        repAuftragsService = new ReparaturAuftragsServiceImpl(db, db);
+        
+        // Initialisierung von DBUnit Anfang
         databaseTester = new JdbcDatabaseTester("org.hsqldb.jdbcDriver", DB_URL, USER, PASSWORD);
         databaseTester
                 .setDataSet(new FlatXmlDataSetBuilder().build(new File("db_full_export.xml")));
         databaseTester.onSetup();
         db = new DatabaseImpl();
         repAuftragsService = new ReparaturAuftragsServiceImpl(db, db);
-
     }
 
     @Test
@@ -72,14 +79,15 @@ public class ReparaturAuftragsServiceIntegrationTest {
 
     @Test
     public void testAbrechnen() throws Exception {
-//        // Initialisierung von DBUnit Anfang
-//        databaseTester = new JdbcDatabaseTester("org.hsqldb.jdbcDriver", DB_URL, USER, PASSWORD);
-//        databaseTester
-//                .setDataSet(new FlatXmlDataSetBuilder().build(new File("db_full_export.xml")));
-//        databaseTester.onSetup();
-//        db = new DatabaseImpl();
-//        repAuftragsService = new ReparaturAuftragsServiceImpl(db, db);
-//        // Initialisierung von DBUnit Ende
+        
+        // Initialisierung von DBUnit Anfang
+        databaseTester = new JdbcDatabaseTester("org.hsqldb.jdbcDriver", DB_URL, USER, PASSWORD);
+        databaseTester
+                .setDataSet(new FlatXmlDataSetBuilder().build(new File("db_full_export.xml")));
+        databaseTester.onSetup();
+        db = new DatabaseImpl();
+        repAuftragsService = new ReparaturAuftragsServiceImpl(db, db);
+        // Initialisierung von DBUnit Ende
 
         ReparaturAuftrag auftrag = repAuftragsService.getAuftragByNr("20160112003");
         assertFalse(auftrag.istGeschlossen());
