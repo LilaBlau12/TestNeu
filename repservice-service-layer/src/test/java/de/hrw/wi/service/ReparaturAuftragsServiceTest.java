@@ -83,6 +83,7 @@ public class ReparaturAuftragsServiceTest {
     @Test
     public void testAbrechnen() {
 
+        //ging nicht
         // konnte den Test leider nicht zum laufen bringen :( 
 //         ReparaturAuftrag auftrag = repAuftragsService.getAuftragByNr("20151202003");
 //         assertFalse(auftrag.istGeschlossen());
